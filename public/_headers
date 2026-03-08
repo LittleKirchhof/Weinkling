@@ -1,0 +1,5 @@
+/*
+  X-DNS-Prefetch-Control: on
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
