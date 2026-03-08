@@ -21,6 +21,12 @@ export const metadata: Metadata = {
   },
 };
 
+// Preload the above-the-fold hero image so browsers fetch it before JS executes
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
