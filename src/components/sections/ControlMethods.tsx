@@ -16,6 +16,7 @@
  */
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { useScrollTimeline } from "@/hooks/useScrollTimeline";
 import { buildControlMethodsTimeline } from "@/animations/controlMethodsTimeline";
 
@@ -293,6 +294,8 @@ export default function ControlMethods() {
                             opacity: 1 !important;
                             transform: none !important;
                         }
+                        /* Hide device image on mobile — text uses full width */
+                        .cm-switchboard { display: none !important; }
                     }
                 `}</style>
 
@@ -325,6 +328,32 @@ export default function ControlMethods() {
                     >
                         {/* Hidden div keeps panelImagesRef aligned with timeline API */}
                         <div ref={(el) => { panelImagesRef.current[i] = el; }} style={{ display: "none" }} />
+
+                        {/* ── Switchboard device image — right side ───── */}
+                        <Image
+                            src="/Untitled.png"
+                            alt="Weinkling switchboard"
+                            width={420}
+                            height={560}
+                            priority={i === 0}
+                            style={{
+                                position:   "absolute",
+                                right:      "8%",
+                                top:        "50%",
+                                transform:  "translateY(-50%)",
+                                maxWidth:   "clamp(220px, 28vw, 420px)",
+                                width:      "auto",
+                                height:     "auto",
+                                maxHeight:  "82%",
+                                objectFit:  "contain",
+                                filter:     "drop-shadow(0 30px 60px rgba(0,0,0,0.6))",
+                                pointerEvents: "none",
+                                userSelect: "none",
+                                // hidden on mobile — content is full-width there
+                                display:    "block",
+                            }}
+                            className="cm-switchboard"
+                        />
 
                         {/* ── Content container ──────────────────────── */}
                         <div
